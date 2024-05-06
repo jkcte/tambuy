@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --main-green: #005200;
+    --main-gold: #fac72a;
+    --main-gray: #d9d9d9;
+    --main-white: #fff;
+    --main-black: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* ----------------- START OF NAVBAR CSS ----------------- */
+.navbar {
+    background: var(--main-green);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 80px;
+    z-index: 99;
+}
+.navbar .logo a {
+    align-items: center;
+}
+.navbar .logo a img {
+    height: 3rem;
+}
+.navbar .icon a {
+    align-items: center;
+}
+.navbar .icon a img {
+    height: 2.5rem;
+}
+.navbar .search-box {
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    line-height: 35px;
+}
+.navbar .search-box input {
+    border: none;
+    outline: none;
+    background: var(--main-white);
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    width: 500px;
+}
+.navbar .search-box input::placeholder {
+    opacity: 0.5;
+}
+.navbar .search-box span {
+    color: var(--main-green);
+    font-size: 20px;
+    background: var(--main-white);
+    height: 100%;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+.navbar .search-box span:hover {
+    color: var(--main-white);
+}
+.navbar .search-box span::after {
+    height: 100%;
+    width: 0%;
+    content: '';
+    background: var(--main-gold);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    transition: 0.3s;
+}
+.navbar .search-box span:hover::after {
+    width: 100%;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+.navbar ul li {
+    padding: 10px 30px;
+    position: relative;
+}
+.navbar ul li a {
+    color: var(--main-white);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+    transition: all 0.3s;
+}
+.navbar ul li a:hover {
+    color: var(--main-gold);
+    text-decoration: underline;
+}
+.profile-drop {
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+    z-index: 9999;
+}
+.navbar ul li:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--main-gray);
+}
+.navbar ul li:hover .dropdown-menu ul {
+    display: block;
+    margin: 10px;
+}
+.navbar ul li:hover .dropdown-menu ul li {
+    width: 150px;
+    padding: 10px;
+    text-align: right;
+}
+.dropdown-menu ul li a {
+    color: var(--main-black);
+}
+.dropdown-menu ul li a:hover {
+    font-weight: 700;
+    color: var(--main-green);
+    transition: all 0.3s;
+}
+.navbar .bar {
+    position: relative;
+    margin: auto;
+    display: none;
+}
+.navbar .bar span {
+    position: absolute;
+    color: var(--main-white);
+    font-size: 1.75rem;
+}
+input[type="checkbox"] {
+    display: none;
+}
+@media screen and (max-width: 1250px) {
+    .navbar {
+        display: block;
+        padding: 0;
+    }
+    .navbar .logo {
+        display: inline-block;
+        padding: 15px 30px;
+    }
+    .navbar .icon {
+        display: none;
+    }
+    .navbar .search-box {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    .navbar .search-box input {
+        width: 90%;
+    }
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+        height: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+    .navbar ul li {
+        text-align: center;
+        transition: 0.3s 0.1s all;
+        opacity: 0;
+    }
+    .navbar ul li a {
+        font-size: 28px;
+        padding: 25px;
+        display: inline-block;
+    }
+    .profile-drop {
+        display: inline-block;
+    }
+    .navbar ul li:nth-child(1){
+        transform: translateX(-150px);
+    }
+    .navbar ul li:nth-child(2){
+        transform: translateX(-200px);
+    }
+    .navbar ul li:nth-child(3){
+        transform: translateX(-250px);
+    }
+    .navbar ul li:nth-child(4){
+        transform: translateX(-300px);
+    }
+    .navbar ul li:nth-child(5){
+        transform: translateX(-350px);
+    }
+    .navbar .dropdown-menu {
+        padding-bottom: 50px;
+    }
+    .navbar ul li:hover .dropdown-menu ul li {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+    .navbar .bar {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 80px;
+        cursor: pointer;
+    }
+    .navbar .bar #times {
+        display: none;
+    }
+    #check:checked ~ .navbar .bar #times {
+        display: block;
+    }
+    #check:checked ~ .navbar .bar #bars {
+        display: none;
+    }
+    #check:checked ~ .navbar ul {
+        visibility: visible;
+        height: 465px;
+    }
+    #check:checked ~ .navbar ul li:nth-child(1),
+    #check:checked ~ .navbar ul li:nth-child(2),
+    #check:checked ~ .navbar ul li:nth-child(3),
+    #check:checked ~ .navbar ul li:nth-child(4),
+    #check:checked ~ .navbar ul li:nth-child(5) {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* ----------------- END OF NAVBAR CSS ----------------- */
+
+/* ----------------- START OF HOME CSS ----------------- */
+.home-nav {
+    float: none;
+    margin: 0 auto;
+    text-transform: uppercase;
+    padding: 50px 0;
+    background: var(--main-white);
+}
+.center {
+    text-align: center;
+}
+.home-nav ul {
+    margin: 0;
+    padding: 0;
+    float: none;
+    list-style: none;
+}
+.home-nav ul li {
+    position: relative;
+    vertical-align: top;
+    margin: 0 72px 0 7px; /* wag kalimutang gawing 0 36px 0 7px or smaller kapag maliit na screen */
+    display: inline-block;
+}
+.home-nav ul li a {
+    color: var(--main-black);
+    position: relative;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 300;
+}
+.home-nav ul li a:hover {
+    color: var(--main-green);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+    /* START BIG SLIDER */
+.big-slider{
+    width: 1300px;
+    max-width: 100vw;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.big-slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.big-slider .list img{
+    width: 1300px;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+.big-slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.big-slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: var(--main-white);
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.big-slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: var(--main-white);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.big-slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: var(--main-white);
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.big-slider .dots li.active{
+    width: 30px;
+}
+@media screen and (max-width: 768px){
+    .big-slider{
+        height: 400px;
+    }
+    .home-nav ul li {
+        margin: 0 24px 0 7px;
+    }
+}
+    /* END BIG SLIDER */
+
+    /* START SMALL SLIDER */
+.product {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    background-color: var(--main-green);
+}
+.product-category {
+    padding-top: 2vw;
+    padding-left: 5.6vw;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--main-green);
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+.product-container {
+    padding: 0 10vw;
+    display: flex;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    background-color: var(--main-green);
+    position: static;
+}
+.product-container::-webkit-scrollbar {
+    display: none;
+}
+.product-card {
+    flex: 0 0 auto;
+    width: 251px;
+    height: 100%;
+    margin-right: 40px;
+    background: var(--main-white);
+    padding: 10px;
+    box-sizing: border-box;
+}
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+.product-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product-info {
+    width: 100%;
+    height: 100px;
+    padding-top: 10px;
+}
+.product-brand {
+    text-transform: uppercase;
+}
+.price {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--main-green);
+}
+.pre-btn,
+.nxt-btn {
+    border: none;
+    width: 10vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--main-green);
+    z-index: 8;
+}    
+.pre-btn {
+    left: 0;
+    transform: rotate(180deg);
+}
+.nxt-btn {
+    right: 0;
+}
+.pre-btn i,
+.nxt-btn i {
+    color: var(--main-white);
+    font-size: 50px;
+    opacity: 0.2;
+}
+.pre-btn:hover i,
+.nxt-btn:hover i {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1023px) {
+    .product-card {
+        width: calc(100% / 5 - 20px); /* 5 slides per view sana; pero baka baguhin ko entirely pagfunction ng slider para di chaka tingnan pag small screen */
+    }
+}
+@media screen and (max-width: 767px) {
+    .product-card {
+        width: calc(100% / 4 - 20px); /* 4 slides per view sana; pero baka baguhin ko entirely pagfunction ng slider para di chaka tingnan pag small screen */
+    }
+}
+@media screen and (max-width: 639px) {
+    .product-card {
+        width: calc(100% / 2 - 20px); /* 2 slides per view sana; pero baka baguhin ko entirely pagfunction ng slider para di chaka tingnan pag small screen */
+    }
+}
+    /* END SMALL SLIDER */
+
+/* ----------------- END OF HOME CSS ----------------- */
